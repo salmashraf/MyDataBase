@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-select i in CreateDB ConnectDB ListDB CreateTable ListTable
+select i in CreateDB ConnectDB ListDB DropDB  
 do
 case $i in 
  CreateDB)
@@ -8,7 +8,8 @@ case $i in
      if [ -e $name ];then
        echo " Error " 
      else 
-       mkdir $name
+       cd ../../mydatabase/mydatabase
+       ./proj.sh
      fi 
      ;;
  ConnectDB)
@@ -24,8 +25,13 @@ case $i in
  ListDB)
      ls -F | grep "/" 
      ;;
- ListTable)
-     ls -F | grep -v "/" 
+ DropDB)
+     read -p "Please Enter DB Name: " name
+     if [ -d $name ];then
+       rm -r $name
+     else 
+       echo " DB doesnot exist, if you are sure you created one, please try again " 
+     fi 
      ;;
  *)
    break
