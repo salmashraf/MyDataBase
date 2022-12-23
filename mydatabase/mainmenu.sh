@@ -1,21 +1,19 @@
 #!/usr/bin/bash
-
+export LC_COLLATE=C
+shopt -s extglob
 select i in CreateDB ConnectDB ListDB DropDB  
 do
 case $i in 
  CreateDB)
      read -p "Please Enter DB Name: " name
-     if [ -e $name ];then
-       echo " Error " 
-     else 
-       cd ../../mydatabase/mydatabase
-       ./proj.sh
-     fi 
+     echo "hello" 
      ;;
  ConnectDB)
      read -p "Please Enter DB Name: " name
      if [ -d $name ];then
        cd $name
+        cd ../../mydatabase/mydatabase
+           ./proj.sh
        pwd
        cd .. 
      else 

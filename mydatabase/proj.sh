@@ -5,11 +5,11 @@ do
 case $i in 
  CreateTable)
       declare -i j=1
-      read -p "Please Enter Number of columns: " number
+      read -p "Please Enter Number of columns: " number >> datafile.txt
       while (( $j < number+1 ))
       do
-      read -p "Please Enter $j Argument: " argument
-      read -p "Please Enter its datatype: " datatype
+      read -p "Please Enter $j Argument: " argument  > datafile.txt
+      read -p "Please Enter its datatype: " datatype > datafile.txt
        ((j = $j + 1))
       done
    ;; 
@@ -18,8 +18,14 @@ case $i in
    echo " Helloo "
    ;; 
  DropTable)
-   rm $name
-   ;; 
+   read -p "Please Enter DB Name: " name
+     if [ -d $name ];then
+       rm $name
+     else 
+       echo " DB doesnot exist, if you are sure you created one, please try again " 
+     fi 
+     ;;
+    
  Insert_into_Table)
    echo " hello "
    ;; 
