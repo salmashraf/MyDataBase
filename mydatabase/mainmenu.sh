@@ -5,17 +5,23 @@ select i in CreateDB ConnectDB ListDB DropDB
 do
 case $i in 
  CreateDB)
+     echo "Hello" 
+     regex="^[a-zA-Z]\+[0-9]$\?"
      read -p "Please Enter DB Name: " name
-     echo "hello" 
+     if [[ $name=~$regex ]];then
+      mkdir ~/mydatabase/mydatabase/$name
+      touch $name.txt
+     else
+       echo " Name can't contain special characters,spaces or start with numbers"
+     fi
+     
      ;;
  ConnectDB)
      read -p "Please Enter DB Name: " name
      if [ -d $name ];then
-       cd $name
-        cd ../../mydatabase/mydatabase
+         cd ../../mydatabase/mydatabase
            ./proj.sh
-       pwd
-       cd .. 
+
      else 
        echo " DB doesnot exist, if you are sure you created one, please try again " 
      fi 

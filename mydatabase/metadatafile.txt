@@ -1,2 +1,3 @@
-employee Table
 argument : datatype : primarykey
+id : int : 123
+name : str : npk
