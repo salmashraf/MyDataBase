@@ -1,0 +1,4 @@
+school    Table
+argument  :      datatype  :  primarykey  12
+location  :      str       :  first       settlement  35
+name      :      str       :  npk         56
